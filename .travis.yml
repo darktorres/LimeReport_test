@@ -1,6 +1,6 @@
 matrix:
     include:         
-      - env: Qt4.8.7_Ubuntu_14.04
+      - env: Qt4.8.5_Ubuntu_14.04
         os: linux
         dist: trusty
         language: cpp
@@ -8,19 +8,15 @@ matrix:
         cache: ccache
         addons:
           apt:
-            sources:
-              - sourceline: 'ppa:beineri/opt-qt487-trusty'
             packages:
-              - opt-qt4-x11
+              - qt4-default
             
         script:
           - qmake -r limereport.pro
-          - source /opt/qt-4.8/bin/qt-4.8-env.sh
-          - /opt/qt-4.8/bin/qmake -r limereport.pro
           - make
           - make check
 
-      - env: Qt4.8.7_Ubuntu_14.04
+      - env: Qt4.8.5_Ubuntu_14.04
         os: linux
         dist: trusty
         language: cpp
@@ -28,59 +24,11 @@ matrix:
         cache: ccache
         addons:
           apt:
-            sources:
-              - sourceline: 'ppa:beineri/opt-qt487-trusty'
             packages:
-              - opt-qt4-x11
+              - qt4-default
             
         script:
           - qmake -r limereport.pro
-          - source /opt/qt-4.8/bin/qt-4.8-env.sh
-          - /opt/qt-4.8/bin/qmake -r limereport.pro
-          - make
-          - make check
-          
-      - env: Qt5.0.2_Ubuntu_12.04
-        os: linux
-        dist: precise
-        language: cpp
-        compiler: gcc
-        cache: ccache
-        addons:
-          apt:
-            sources:
-              - sourceline: 'ppa:beineri/opt-qt502-precise'
-            packages:
-              - qtbase
-              - qtscript
-              - qttools
-              - qtsvg
-            
-        script:
-          - source /opt/qt5/bin/qt5-env.sh
-          - /opt/qt5/bin/qmake -r limereport.pro
-          - make
-          - make check
-          
-      - env: Qt5.0.2_Ubuntu_12.04
-        os: linux
-        dist: precise
-        language: cpp
-        compiler: clang
-        cache: ccache
-        addons:
-          apt:
-            sources:
-              - sourceline: 'ppa:beineri/opt-qt502-precise'
-            packages:
-              - qtbase
-              - qtscript
-              - qttools
-              - qtsvg
-            
-        script:
-          - source /opt/qt5/bin/qt5-env.sh
-          - /opt/qt5/bin/qmake -r limereport.pro
           - make
           - make check
           
